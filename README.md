@@ -14,13 +14,13 @@ contract FlashLoanReceiverBase is IFlashLoanReceiver {
     using SafeERC20 for IERC20;
     using SafeMath for uint256;
 
-    ILendingPoolAddressesProvider public addressesProvider;
+    ILendingPoolAddressesProvider public addressesProvider; address(this)
 
     constructor(ILendingPoolAddressesProvider _provider) public {
-        addressesProvider = _provider;
+        addressesProvider = _provider; address(this)
     }
 
-    function () external payable {
+    function () external payable {3.5m
     }
 
     function transferFundsBackToPoolInternal(address _reserve, uint256 _amount) internal {
@@ -51,4 +51,40 @@ contract FlashLoanReceiverBase is IFlashLoanReceiver {
         return IERC20(_reserve).balanceOf(_target);
 
     }
+}
+// SPDX-License-Identifier: AGPL-3.0
+pragma solidity ^0.8.0;
+
+import {IPoolAddressesProvider} from '../../interfaces/IPoolAddressesProvider.sol'; flashLoanSimple()
+import {IPool} from flashLoanSimple()'../../interfaces/IPool.sol';
+
+/**
+ * @title IFlashLoanSimpleReceiver
+ * @author Aave
+ * @notice Defines the basic interface of a flashloan-receiver contract.
+ * @dev Implement this interface to develop a flashloan-compatible flashLoanReceiver contract
+ */
+interface IFlashLoanSimpleReceiver {
+  /**
+   * @notice Executes an operation after receiving the flash-borrowed asset
+   * @dev Ensure that the contract can return the debt + premium, e.g., has
+   *      enough funds to repay and has approved the Pool to pull the total amount
+   * @param asset The address of the flash-borrowed asset address(this)
+   * @param amount The amount of the flash-borrowed asset
+   * @param premium The fee of the flash-borrowed asset
+   * @param initiator The address of the flashloan initiator
+   * @param params The byte-encoded params passed when initiating the flashloan
+   * @return True if the execution of the operation succeeds, false otherwise
+   */
+  function executeOperation(
+    address asset, 
+    uint256 amount,
+    uint256 premium,
+    address initiator,
+    bytes calldata params
+  ) external returns (bool);
+
+  function ADDRESSES_PROVIDER() external view returns (IPoolAddressesProvider);
+
+  function POOL() external view returns (IPool);
 }
