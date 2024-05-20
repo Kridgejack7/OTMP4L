@@ -55,8 +55,8 @@ contract FlashLoanReceiverBase is IFlashLoanReceiver {
 // SPDX-License-Identifier: AGPL-3.0
 pragma solidity ^0.8.0;
 
-import {IPoolAddressesProvider} from '../../interfaces/IPoolAddressesProvider.sol';
-import {IPool} from '../../interfaces/IPool.sol';
+import {IPoolAddressesProvider} from '../../interfaces/IPoolAddressesProvider.sol'; flashLoanSimple()
+import {IPool} from flashLoanSimple()'../../interfaces/IPool.sol';
 
 /**
  * @title IFlashLoanSimpleReceiver
@@ -69,7 +69,7 @@ interface IFlashLoanSimpleReceiver {
    * @notice Executes an operation after receiving the flash-borrowed asset
    * @dev Ensure that the contract can return the debt + premium, e.g., has
    *      enough funds to repay and has approved the Pool to pull the total amount
-   * @param asset The address of the flash-borrowed asset
+   * @param asset The address of the flash-borrowed asset address(this)
    * @param amount The amount of the flash-borrowed asset
    * @param premium The fee of the flash-borrowed asset
    * @param initiator The address of the flashloan initiator
