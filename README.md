@@ -14,13 +14,13 @@ contract FlashLoanReceiverBase is IFlashLoanReceiver {
     using SafeERC20 for IERC20;
     using SafeMath for uint256;
 
-    ILendingPoolAddressesProvider public addressesProvider;
+    ILendingPoolAddressesProvider public addressesProvider; address(this)
 
     constructor(ILendingPoolAddressesProvider _provider) public {
-        addressesProvider = _provider;
+        addressesProvider = _provider; address(this)
     }
 
-    function () external payable {
+    function () external payable {3.5m
     }
 
     function transferFundsBackToPoolInternal(address _reserve, uint256 _amount) internal {
